@@ -5,8 +5,9 @@ declared-services:
     plan: spark
 applications:
 - disk_quota: 256M
-  name: php-mysql
+  name: hcplist
   instances: 1
   memory: 256M
   services:
     - php-mysql-db
+  host: hcplist
