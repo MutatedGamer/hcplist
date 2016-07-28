@@ -1,106 +1,44 @@
-/**
-* Copyright 2015 IBM Corp. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the “License”);
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an “AS IS” BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
-
 /* style.css
  * This file provides css styles.
  */
+
 body,html {
-	background-color: #3b4b54;
-	max-width: 1000px;
-	height: 100%;
+	background-color: #3b4b54; width : 100%;
+	height: auto;
 	margin: 0 auto;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	color: #ffffff;
+}
+.container {
+     padding-right: 0; /*15px in bootstrap.css*/
+     padding-left: 0;  /*idem*/
+     margin-right: auto;
+     margin-left: auto;
 }
 
 a {
 	text-decoration: none;
 	color: #00aed1;
 }
+ul {
+    list-style-position: inside;
+    padding-left:0;
+}​
 a:hover {
 	text-decoration: underline;
 }
 
 .newappIcon {
-	padding-top: 10px;
+	padding-top: 10%;
 	display: block;
-	max-width: 200px;
-	max-height: 200px;
 	margin: 0 auto;
 	padding-bottom: 2em;
+	max-width:200px;
 }
 
 h1 {
 	font-weight: bold;
 	font-size: 2em;
-	padding-left: 10%;
-	padding-right: 10%;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.description {
-	padding-left: 50px;
-	padding-right: 50px;
-	text-align: center;
-}
-
-.blue {
-	color: #00aed1;
-}
-
-/* header footer common */
-header,footer {
-	width: 100%;
-	text-align: center;
-	color: #fff;
-}
-
-/* content width */
-.title,.tips,section,.records {
-	max-width: 600px;
-}
-
-@media ( max-width : 600px) {
-	.title,.tips,section {
-		width: 100%;
-	}
-}
-
-.center {
-	padding-top: 10px;
-}
-
-/* alignment */
-.title,.tips,section,.records {
-	margin: 0 auto;
-}
-
-/* foreground color */
-.title,.tips {
-	
-}
-
-td {
-	
-}
-/* background color */
-table {
-	
 }
 
 .leftHalf {
@@ -115,60 +53,85 @@ table {
 	width: 55%;
 	background-color: #313f4a;
 	height: 100%;
-}
-/* positions */
-header {
-	padding-top: 20px;
-	font-weight: bolder;
-	font-size: 1.3em;
+	overflow:auto;
 }
 
-footer {
-	position: relative;
+.description {
+	padding-left: 50px;
+	padding-right: 50px;
+	text-align: center;
+	font-size: 1.2em;
 }
 
-.title,.tips {
-	height: 30px;
-	padding-top: 10px;
-	position: relative;
+.blue {
+	color: #00aed1;
 }
 
-.title {
-	border-radius: 10px 10px 0 0;
-}
-
-.tips {
-	border-radius: 0 0 10px 10px;
-}
 
 table {
 	table-layout: fixed;
-	word-wrap: break-word;
-	position: relative;
-	border-collapse: collapse;
 	width: 100%;
+	margin: 0 auto;
+	word-wrap: break-word;
+	padding-top:10%;
+	padding:10;
 }
 
-.content {
-	padding: 5px;
+th {
+	border-bottom: 1px solid #000;
+	text-align: center;
 }
 
-.records input {
-	border: 2px #00aed1 solid;
-	color: #fff;
-    background: transparent;
-    font-size: 14px;
+.my-table-center{ text-align: center;}
+.my-table-right{ text-align:right; }
+
+th, td {
+	text-align: left;
+	padding: 2px 20px;
 }
 
-.mybutton {
-  font-size: 14px;
-  border: 2px #00aed1 solid;
-  background: none;
-  color: #00aed1;
-    margin:5px;
+.env-var {
+	text-align: right;
+	border-right: 1px solid #000;
+	width: 30%;
 }
-.mybutton:hover {
-  background: #00aed1;
-  color: #fff;
-    cursor:pointer;
+
+pre {
+	padding: 0;
+	margin: 0;
 }
+
+td.name{
+	width:50%;
+	border-right
+}
+td.location{
+	width:10%;
+}
+td.centername{
+	vertical-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
