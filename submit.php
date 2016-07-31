@@ -139,6 +139,6 @@ if($name!='' && $email!=''){
 
 	echo "<a href=index.php>Return to database to search for your profile!</a>";
 } else {
-	echo "Name and email cannot be left blank, please <a href=index.php>go back</a> and fill them out.";
+	echo "Name and email cannot be left blank, please <a href=newhcp.php>go back</a> and fill them out.";
 }
 ?>
