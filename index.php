@@ -1112,7 +1112,7 @@ $search_result = filterTable($sql);
                     <?php 
                     //Stakeholders Exeperienced With
                     
-                    if($row['exp_providers']=="high level of experiences" || $row['exp_providers']=="some experiences"){echo '<li>Providers</li>'; }else {echo '<li>Providers</li>';}
+                    if($row['exp_providers']=="high level of experiences" || $row['exp_providers']=="some experiences"){echo '<li>Providers</li>'; }
                     if($row['exp_pharm']=="high level of experiences" || $row['exp_pharm']=="some experiences"){echo '<li>Pharmaceutical / Biotechnology</li>';}
                     if($row['exp_medical_device']=="high level of experiences" || $row['exp_medical_device']=="some experiences"){echo '<li>Medical Device</li>';}
                     if($row['exp_private_payers']=="high level of experiences" || $row['exp_private_payers']=="some experiences"){echo '<li>Private Payers</li>';}
