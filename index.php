@@ -620,7 +620,7 @@ $search_result = filterTable($sql);
 				<form action="index.php" method="post">
 				</br>
 				
-				<Strong>Bolded fields indicates an expert level in that specific area.</Strong><br>
+				<Strong>Click on a professional to reveal more information about him/her. Bolded fields indicates an expert level in that specific area.</Strong><br>
 				<input style="width: 91%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, niche experience, and organization roles.">
             	<input style="position: absolute; right: 15px; width: 100px; height:30px" type="submit" name="search" value="Filter"><br>
             	<button type="button" onclick="filter()">Show Filter Options</button> 
