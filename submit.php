@@ -137,7 +137,7 @@ if($name!='' && $email!=''){
 
 	echo "Submitted successfully!";
 
-	echo "<a href=index.php>Return to database to search for your profile!</a>";
+	echo "<a href=https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W349ac3727246_4f82_9ed1_23bc0e0fccac/page/Healthcare%20Professionals%20List>Return to database to search for your profile!</a>";
 } else {
 	echo "Name and email cannot be left blank, please <a href=newhcp.php>go back</a> and fill them out.";
 }
