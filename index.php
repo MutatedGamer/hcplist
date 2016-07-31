@@ -655,7 +655,7 @@ $search_result = filterTable($sql);
               <input type="checkbox" name="respiratory_degree" value="respiratory_degree" <?php if(isset($_POST['respiratory_degree'])) echo "checked='checked'"; ?>>Respiratory Therapist <br>
               <input type="checkbox" name="social_care_degree" value="social_care_degree" <?php if(isset($_POST['social_care_degree'])) echo "checked='checked'"; ?>>Social Care Worker <br>
               </td>
-              <td style="padding:10px; border-right:solid 1px grey; text-align:center;" width="40" valign="top">
+              <td style="padding:10px; border-right:solid 1px grey; text-align:center;" width="40%" valign="top">
 
               <center><u>Post-Degree Training</u><br></center>
               <table>
