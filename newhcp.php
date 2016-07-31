@@ -17,10 +17,10 @@
     Please answer every question.<br><br>
     <table class="submitTable">
     <tr>
-    <td width="100px">Full Name:</td><td width="auto"><input style="width:40%; height:30px" type="text" name="name" placeholder="(e.g. John Doe)"><td>
+    <td width="100px">Full Name:</td><td width="auto"><input style="width:80%; height:30px" type="text" name="name" placeholder="(e.g. John Doe)"><td>
     </tr>
     <tr>
-    <td width="100px">Email: </td><td width="auto"><input style="width:40%; height:30px" type="text" name="email" placeholder="(e.g. john.doe@us.ibm.com)"></td>
+    <td width="100px">Email: </td><td width="auto"><input style="width:80%; height:30px" type="text" name="email" placeholder="(e.g. john.doe@us.ibm.com)"></td>
     </tr>
     </table>
     <br>
