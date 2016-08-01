@@ -1282,7 +1282,7 @@ $search_result = filterTable($sql);
                 		<td class="my-table-center" style="padding-left:10px;border-top:1px solid gray;" width="33%" valign="top">
                 		<font size="3">
                 		<?php
-                			if($row['role_outpatient']=='Yes'||$row['role_inpatient']='Yes'||$row['role_emergency_room']=='Yes'||$row['role_retail_clinic']=='Yes'||$row['role_telehealth']=='Yes'||$row['role_occupational_health']=='Yes'||$row['role_pharm']=='Yes'|$row['role_other']!='Not applicable')
+                			if($row['role_outpatient']=='Yes'||$row['role_inpatient']=='Yes'||$row['role_emergency_room']=='Yes'||$row['role_retail_clinic']=='Yes'||$row['role_telehealth']=='Yes'||$row['role_occupational_health']=='Yes'||$row['role_pharm']=='Yes'|$row['role_other']!='Not applicable')
                 			{
                 				echo "Administration/Operational Roles Held In:<ul>";
                 				if($row['role_outpatient']=='Yes')
