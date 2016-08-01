@@ -11,6 +11,11 @@
 </head>
 <body>
 <font size="1">
+<style>
+#container-fluid{
+  height:auto;
+}
+</style>
 <div class="container-fluid">
 	<!--<div class="row">-->
 		<!--<div class="col-md-8">
@@ -617,10 +622,10 @@ $search_result = filterTable($sql);
 
 				
 				?>
-				<form action="index.php" method="post">
+				<form action="" method="post">
 				</br>
 				
-				<Strong>Click on a professional to reveal more information about him/her. Bolded fields indicates an expert level in that specific area.</Strong><br>
+				<Strong>Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
 				<input style="width: 91%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, niche experience, and organization roles.">
             	<input style="position: absolute; right: 15px; width: 100px; height:30px" type="submit" name="search" value="Filter"><br>
             	<button type="button" onclick="filter()">Show Filter Options</button> 
@@ -1119,7 +1124,7 @@ $search_result = filterTable($sql);
                     if($row['exp_public_payers']=="high level of experiences" || $row['exp_public_payers']=="some experiences"){echo '<li>Public Payers</li>';}
                     if($row['exp_medical_employers']=="high level of experiences" || $row['exp_medical_employers']=="some experiences"){echo '<li>Medical Employers</li>';}
                     if($row['exp_health_info_tech']=="high level of experiences" || $row['exp_health_info_tech']=="some experiences"){echo '<li>Health Information Technology</li>';}
-                    if($row['exp_level_other']!="Not applicable" && $row['exp_level_other']=="high level of experiences" || $row['exp_level_other']=="some experiences"){echo '<li>'.$row['exp_with_other'].'</li>';}
+                    if(($row['exp_with_other']!="Not applicable" && $row['exp_level_other']=="high level of experiences") || ($row['exp_with_other']!="Not applicable" && $row['exp_level_other']=="some experiences")){echo '<li>'.$row['exp_with_other'].'</li>';}
 
                      ?>
                      </ul>
@@ -1194,7 +1199,7 @@ $search_result = filterTable($sql);
                     	echo "<strong><li>Mental Health</strong></li>";
                     } elseif ($row['exp_mental_health']=="high level of expertise" || $row['exp_mental_health']=="some expertise"){echo '<li>Mental Health</li>';}
                     if($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="expert")
-                    {echo "<strong><li>".$row["exp_with_other_2"]."</strong></li>";} elseif ($row['exp_level_other_2']=="high level of expertise" || $row['exp_level_other_2']=="some expertise"){echo '<li>'.$row["exp_with_other_2"].'</li>';}
+                    {echo "<strong><li>".$row["exp_with_other_2"]."</strong></li>";} elseif (($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="high level of expertise") || ($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="some expertise")){echo '<li>'.$row["exp_with_other_2"].'</li>';}
 
                      ?>
                      </ul>

@@ -17,10 +17,10 @@
     Please answer every question.<br><br>
     <table class="submitTable">
     <tr>
-    <td width="100px">Full Name:</td><td width="auto"><input style="width:80%; height:30px" type="text" name="name" placeholder="(e.g. John Doe)"><td>
+    <td width="100px">Full Name:</td><td width="auto"><input style="width:40%; height:30px" type="text" name="name" placeholder="(e.g. John Doe)"><td>
     </tr>
     <tr>
-    <td width="100px">Email: </td><td width="auto"><input style="width:80%; height:30px" type="text" name="email" placeholder="(e.g. john.doe@us.ibm.com)"></td>
+    <td width="100px">Email: </td><td width="auto"><input style="width:40%; height:30px" type="text" name="email" placeholder="(e.g. john.doe@us.ibm.com)"></td>
     </tr>
     </table>
     <br>
@@ -217,9 +217,8 @@
     </select><br> <br>
 
     8. In what location/setting did you hold “operations/administrative” roles? <br>
-        <input type="checkbox" id="employed_provider" onclick="show51();" value="employed_provider">Outpatient or Clinic <br>
-        <input type="checkbox" onclick="show51();" id="role_outpatient" value="role_outpatient">Payer <br>
-        <input type="checkbox" onclick="show51();" id="role_inpatient" value="role_inpatient">Inpatient or Hospital  <br>
+        <input type="checkbox" id="role_outpatient" onclick="show51();" value="role_outpatient">Outpatient or Clinic <br>
+        <input type="checkbox" onclick="show51();" id="role_outpatient" value="role_inpatient">Inpatient or Hospital <br>
         <input type="checkbox" onclick="show51();" id="role_emergency_room" value="role_emergency_room">Emergency Room  <br>
         <input type="checkbox" onclick="show51();" id="role_retail_clinic" value="role_retail_clinic">Retail Clinic <br>
         <input type="checkbox" onclick="show51();" id="role_telehealth" value="role_telehealth">Telehealth  <br>
