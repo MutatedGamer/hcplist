@@ -1325,7 +1325,7 @@ $search_result = filterTable($sql);
                 		<td style="padding-left:10px;" width="33%" valign="top" class="my-table-right">
                 		<font size="3">
                 			<?php
-                				if($row['health_anal_org_1']!='Not applicable'||$row['health_anal_org_2']='Not applicable'||$row['health_anal_org_3']='Not applicable')
+                				if($row['health_anal_org_1']!='Not applicable'||$row['health_anal_org_2']!='Not applicable'||$row['health_anal_org_3']!='Not applicable')
                 				{
                 					echo "Previous Health Analytics/Informatics Roles At:<ul>";
                 				if($row['health_anal_org_1']!='Not applicable')
@@ -1358,7 +1358,7 @@ $search_result = filterTable($sql);
                 				echo "</ul><br>";
                 				}
 
-		                		if($row['health_info_org_1']!='Not applicable'||$row['health_info_org_2']='Not applicable'||$row['health_info_org_3']='Not applicable')
+		                		if($row['health_info_org_1']!='Not applicable'||$row['health_info_org_2']!='Not applicable'||$row['health_info_org_3']!='Not applicable')
 		                        {
 		                          echo "Previous Health Information Technology Roles At:<ul>";
 		                        if($row['health_info_org_1']!='Not applicable')

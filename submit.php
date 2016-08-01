@@ -93,7 +93,7 @@
 	if (isset ($_POST['role_telehealth'])) {$role_telehealth='Yes';} else {$role_telehealth='No';}
 	if (isset ($_POST['role_occupational_health'])) {$role_occupational_health='Yes';} else {$role_occupational_health='No';}
 	if (isset ($_POST['role_pharm'])) {$role_pharm='Yes';} else {$role_pharm='No';}
-	if (isset ($_POST['checkOther2'])) {$role_other=$_POST['role_other'];} else {$role_other=$_POST['role_other'];}
+	if (isset ($_POST['checkOther2'])) {$role_other=$_POST['role_other'];} else {$role_other=$_POST['Not applicable'];}
 	if($_POST['health_anal_org_1']!=""){$health_anal_org_1=$_POST['health_anal_org_1'];} else {$health_anal_org_1='Not applicable';}
 	if($_POST['health_anal_role_1']!=""){$health_anal_role_1=$_POST['health_anal_role_1'];} else {$health_anal_role_1='Not applicable';}
 	if($_POST['health_anal_org_2']!=""){$health_anal_org_1=$_POST['health_anal_org_2'];} else {$health_anal_org_2='Not applicable';}
