@@ -428,10 +428,10 @@
 
     </div>
     <input type="checkbox" id="showSubmit" onclick="checkSubmit();" value="showSubmit">Clicking submit will replace the HCP entry entirely with what you have updated.<br>
-    <div id="255">
+    <div style="display:none" id="255">
     <center>
     <br>
-        <button type="submit" class="btn btn-primary btn-large" width="30px" height="60px" type="button" name="submit">SUBMIT</button>
+        <button  type="submit" class="btn btn-primary btn-large" width="30px" height="60px" type="button" name="submit">SUBMIT</button>
     </center>
     </div>
     <br>
