@@ -1114,7 +1114,7 @@ $search_result = filterTable($sql);
                     if($row['employed_government']=="Yes"){echo '<li>Government</li>';}
                     if($row['employed_biotech']=="Yes"){echo '<li>Biotech</li>';}
                     if($row['employed_health_it']=="Yes"){echo '<li>Health IT</li>';}
-                    if($row['employed_other']!="Not applicable"){echo '<li>'.$row['employed_other'].'</li>';}
+                    if($row['employed_other']!="Not applicable"){echo '<li>'.htmlentities($row['employed_other'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</li>';}
                      ?>
                      </ul>
                     </td>
@@ -1131,8 +1131,7 @@ $search_result = filterTable($sql);
                     if($row['exp_public_payers']=="high level of experiences" || $row['exp_public_payers']=="some experiences"){echo '<li>Public Payers</li>';}
                     if($row['exp_medical_employers']=="high level of experiences" || $row['exp_medical_employers']=="some experiences"){echo '<li>Medical Employers</li>';}
                     if($row['exp_health_info_tech']=="high level of experiences" || $row['exp_health_info_tech']=="some experiences"){echo '<li>Health Information Technology</li>';}
-                    if(($row['exp_with_other']!="Not applicable" && $row['exp_level_other']=="high level of experiences") || ($row['exp_with_other']!="Not applicable" && $row['exp_level_other']=="some experiences")){echo '<li>'.$row['exp_with_other'].'</li>';}
-
+                    if(($row['exp_with_other']!="Not applicable" && $row['exp_level_other']=="high level of experiences") || ($row['exp_with_other']!="Not applicable" && $row['exp_level_other']=="some experiences")){echo '<li>'.htmlentities($row['exp_with_other'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</li>';}
                      ?>
                      </ul>
                     </td>
@@ -1206,7 +1205,7 @@ $search_result = filterTable($sql);
                     	echo "<strong><li>Mental Health</strong></li>";
                     } elseif ($row['exp_mental_health']=="high level of expertise" || $row['exp_mental_health']=="some expertise"){echo '<li>Mental Health</li>';}
                     if($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="expert")
-                    {echo "<strong><li>".$row["exp_with_other_2"]."</strong></li>";} elseif (($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="high level of expertise") || ($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="some expertise")){echo '<li>'.$row["exp_with_other_2"].'</li>';}
+                    {echo "<strong><li>".$row["exp_with_other_2"]."</strong></li>";} elseif (($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="high level of expertise") || ($row['exp_with_other_2']!="Not applicable" && $row['exp_level_other_2']=="some expertise")){echo '<li>'.htmlentities($row['exp_with_other_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</li>';}
 
                      ?>
                      </ul>
@@ -1327,7 +1326,7 @@ $search_result = filterTable($sql);
                 				}
                 				if($row['role_other']!='Not applicable')
                 				{
-                					echo "<li>".$row['role_other']."</li>";
+                					echo "<li>".htmlentities($row['role_other'], ENT_QUOTES | ENT_HTML5, 'UTF-8')."</li>";
                 				}
                 				echo "</ul><br>";
                 			}
