@@ -4,21 +4,16 @@ session_start();
 if (!(isset($_SESSION['login_user']) && $_SESSION['login_user'] != '')) {
 header ("Location: login.php");
 }
-if(isset($_POST['search'])) {
-	$display = "no custom filters";
-	unset($print);
-	$print=[];
-		$valueToSearch = $_POST['valueToSearch'];
-	// search in all table columns
-	// using concat mysql function
+if(isset($_POST['search']) && $_POST['valueToSearch'] != "") {
+	$mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
+	$mysql_user     = "bf0fbe99b3665b";
+	$mysql_password = "bf7f29f2";
+	$mysql_database = "ad_63dc1eebbb2aed2";
+	$connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
+	$valueToSearch = $_POST['valueToSearch'];
+	$valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
+	$sql = "SELECT * FROM persons WHERE `email` LIKE '%".$valueToSearch."%'";
 
-// Start of with some "base" or "generic" SQL which will be needed no matter which option/s are selected:
-$sql = "SELECT * FROM persons WHERE `email` LIKE '%".$_POST['valueToSearch']."%'";
-$mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-$mysql_user     = "bf0fbe99b3665b";
-$mysql_password = "bf7f29f2";
-$mysql_database = "ad_63dc1eebbb2aed2";
-$connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
 $search_result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_array($search_result);
 $_POST['name'] = $row['name'];

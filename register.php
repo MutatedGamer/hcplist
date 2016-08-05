@@ -55,7 +55,7 @@
                   if($_SERVER["REQUEST_METHOD"] == "POST") {
                      // username and password sent from form 
                      $key = $_POST['key'];
-                     $myusername = $_POST['username'];
+                     $myusername = mysqli_escape_string($db, $_POST['username']);
                      $mypassword = $_POST['password'];
                      $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
                         function generateHashWithSalt($password) {

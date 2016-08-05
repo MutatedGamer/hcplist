@@ -30,14 +30,22 @@
 					$display = "no custom filters";
 					unset($print);
 					$print=[];
+          $mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
+          $mysql_user     = "bf0fbe99b3665b";
+          $mysql_password = "bf7f29f2";
+          $mysql_database = "ad_63dc1eebbb2aed2";
+          $connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
    					$valueToSearch = $_POST['valueToSearch'];
+            $valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
     				// search in all table columns
     				// using concat mysql function
     				$query = "CONCAT(`name`, `email`, `exp_with_other_2`, `exp_with_other`, `role_other`, `health_anal_org_1`, `health_anal_role_1`, `health_anal_org_2`, `health_anal_role_2`, `health_anal_org_3`, `health_anal_role_3`, `health_info_org_1`, `health_info_role_1`, `health_info_org_2`, `health_info_role_2`, `health_info_org_3`, `health_info_role_3`) LIKE '%".$valueToSearch."%'";
 
 // Start of with some "base" or "generic" SQL which will be needed no matter which option/s are selected:
 $sql_base = "SELECT * FROM persons WHERE ";
-
+$expected_experience = array('none', 'min', 'some', 'high');
+$expected_expertise = array('none', 'min', 'some', 'high','expert');
+$expected_yes_no = array('Yes', 'No');
 // Now check the $_POST'ed values.  By adding each checked checkbox into a temporary array ( $sql_extra ), you can then merge it into a valid SQL string later:
 $sql_extra[] = $query;
 if (isset ( $_POST['delivered_outpatient'] ) ) {$sql_extra[] = "delivered_outpatient='Yes'"; $print[]="Outpatient or Clinic";}
@@ -101,7 +109,7 @@ if (isset ( $_POST['employed_other'] ) ) {$sql_extra[] = "employed_other='Yes'";
 
 //Stakeholder Experience
  
-if($_POST['expProvider'] !="" ) {
+if(in_array($_POST['expProvider'], $expected_experience)) {
  $print[]="Filtered"; $varProviders = $_POST['expProvider'];
 
    if ($varProviders=="min"){
@@ -115,9 +123,8 @@ if($_POST['expProvider'] !="" ) {
  }
 }
 
-if($_POST['expPharm'] !="") {
+if(in_array($_POST['expPharm'], $expected_experience)) {
  $print[]="Filtered"; $varPharm = $_POST['expPharm'];
-
    if ($varPharm=="min"){
     $sql_extra[] = "(exp_pharm='minimal experiences' OR exp_pharm='some experiences' OR exp_pharm='high level of experiences')";
  }
@@ -129,8 +136,8 @@ if($_POST['expPharm'] !="") {
  }
 }
 
-if($_POST['expMedDev'] !="") {
- $print[]="Filtered"; $varMedDev = $_POST['expMedDev'];
+if(in_array($_POST['expMedDev'], $expected_experience)) { 
+  $print[]="Filtered"; $varMedDev = $_POST['expMedDev'];
 
    if ($varMedDev=="min"){
     $sql_extra[] = "(exp_medical_device='minimal experiences' OR exp_medical_device='some experiences' OR exp_medical_device='high level of experiences')";
@@ -143,7 +150,7 @@ if($_POST['expMedDev'] !="") {
  }
 }
 
-if($_POST['expPrivatePayers'] !="") {
+if(in_array($_POST['expPrivatePayers'], $expected_experience)) {
  $print[]="Filtered"; $varPrivatePayers = $_POST['expPrivatePayers'];
 
    if ($varPrivatePayers=="min"){
@@ -157,7 +164,7 @@ if($_POST['expPrivatePayers'] !="") {
  }
 }
 
-if($_POST['expEmployers'] !="") {
+if(in_array($_POST['expEmployers'], $expected_experience)) {
  $print[]="Filtered"; $varPublicPayers = $_POST['expEmployers'];
 
    if ($varPublicPayers=="min"){
@@ -171,7 +178,7 @@ if($_POST['expEmployers'] !="") {
  }
 }
 
-if($_POST['expEmployers'] !="") {
+if(in_array($_POST['expEmployers'], $expected_experience)) {
  $print[]="Filtered"; $varMedEmp = $_POST['expEmployers'];
 
    if ($varMedEmp=="min"){
@@ -185,7 +192,7 @@ if($_POST['expEmployers'] !="") {
  }
 }
 
-if($_POST['expHIT'] !="") {
+if(in_array($_POST['expHIT'], $expected_experience)) {
  $print[]="Filtered"; $varHIT = $_POST['expHIT'];
 
    if ($varHIT=="min"){
@@ -199,7 +206,7 @@ if($_POST['expHIT'] !="") {
  }
 }
 
-if($_POST['expOther'] !="") {
+if(in_array($_POST['expOther'], $expected_experience)) {
  $print[]="Filtered"; $varOther = $_POST['expOther'];
 
    if ($varOther=="min"){
@@ -216,7 +223,7 @@ if($_POST['expOther'] !="") {
 
 
 //Watson Health Focus Areas
-if($_POST['expOncology'] !="") {
+if(in_array($_POST['expOncology'], $expected_expertise)) {
  $print[]="Filtered"; $varOnc = $_POST['expOncology'];
    if ($varOnc=="min"){
     $sql_extra[] = "(exp_onc='minimal expertise' OR exp_onc='some expertise' OR exp_onc='high level of expertise' OR exp_onc='expert')";
@@ -233,7 +240,7 @@ if($_POST['expOncology'] !="") {
  }
 
 
-if($_POST['expGenomics'] !="") {
+if(in_array($_POST['expGenomics'], $expected_expertise)) {
  $print[]="Filtered"; $varGen = $_POST['expGenomics'];
 
    if ($varGen=="min"){
@@ -250,7 +257,7 @@ if($_POST['expGenomics'] !="") {
  }
 }
 
-if($_POST['expClinicalTrials'] !="") {
+if(in_array($_POST['expClinicalTrials'], $expected_expertise)) {
  $print[]="Filtered"; $varCT = $_POST['expClinicalTrials'];
 
    if ($varCT=="min"){
@@ -267,7 +274,7 @@ if($_POST['expClinicalTrials'] !="") {
  }
 }
 
-if($_POST['expRadiology'] !="") {
+if(in_array($_POST['expRadiology'], $expected_expertise)) {
  $print[]="Filtered"; $varRad = $_POST['expRadiology'];
 
    if ($varRad=="min"){
@@ -284,7 +291,7 @@ if($_POST['expRadiology'] !="") {
  }
 }
 
-if($_POST['expHealthAndWellness'] !="") {
+if(in_array($_POST['expHealthAndWellness'], $expected_expertise)) {
  $print[]="Filtered"; $varHAW = $_POST['expHealthAndWellness'];
 
    if ($varHAW=="min"){
@@ -301,7 +308,7 @@ if($_POST['expHealthAndWellness'] !="") {
  }
 }
 
-if($_POST['expCDM'] !="") {
+if(in_array($_POST['expCDM'], $expected_expertise)) {
  $print[]="Filtered"; $varCDM = $_POST['expCDM'];
 
    if ($varCDM=="min"){
@@ -318,7 +325,7 @@ if($_POST['expCDM'] !="") {
  }
 }
 
-if($_POST['expPreventiveCare'] !="") {
+if(in_array($_POST['expPreventiveCare'], $expected_expertise)) {
  $print[]="Filtered"; $varPC = $_POST['expPreventiveCare'];
 
    if ($varPC=="min"){
@@ -335,7 +342,7 @@ if($_POST['expPreventiveCare'] !="") {
  }
 }
 
-if($_POST['expPopulationHealth'] !="") {
+if(in_array($_POST['expPopulationHealth'], $expected_expertise)) {
  $print[]="Filtered"; $varPop = $_POST['expPopulationHealth'];
 
    if ($varPop=="min"){
@@ -352,7 +359,7 @@ if($_POST['expPopulationHealth'] !="") {
  }
 }
 
-if($_POST['expSocial'] !="") {
+if(in_array($_POST['expSocial'], $expected_expertise)) {
  $print[]="Filtered"; $varSocial = $_POST['expSocial'];
 
    if ($varSocial=="min"){
@@ -369,7 +376,7 @@ if($_POST['expSocial'] !="") {
  }
 }
 
-if($_POST['expLifeSciences'] !="") {
+if(in_array($_POST['expLifeSciences'], $expected_expertise)) {
  $print[]="Filtered"; $varLife = $_POST['expLifeSciences'];
 
    if ($varLife=="min"){
@@ -386,7 +393,7 @@ if($_POST['expLifeSciences'] !="") {
  }
 }
 
-if($_POST['expValueBasedCare'] !="") {
+if(in_array($_POST['expValueBasedCare'], $expected_expertise)) {
  $print[]="Filtered"; $varVBC = $_POST['expValueBasedCare'];
 
    if ($varVBC=="min"){
@@ -405,7 +412,7 @@ if($_POST['expValueBasedCare'] !="") {
 
 
 //Therapeutic Areas
-if($_POST['expHeartDisease'] !="") {
+if(in_array($_POST['expHeartDisease'], $expected_expertise)) {
  $print[]="Filtered"; $varHD = $_POST['expHeartDisease'];
 
    if ($varHD=="min"){
@@ -422,7 +429,7 @@ if($_POST['expHeartDisease'] !="") {
  }
 }
 
-if($_POST['expDiabetes'] !="") {
+if(in_array($_POST['expDiabetes'], $expected_expertise)) {
  $print[]="Filtered"; $varDiabetes = $_POST['expDiabetes'];
 
    if ($varDiabetes=="min"){
@@ -439,7 +446,7 @@ if($_POST['expDiabetes'] !="") {
  }
 }
 
-if($_POST['expArthritis'] !="") {
+if(in_array($_POST['expArthritis'], $expected_expertise)) {
  $print[]="Filtered"; $varArthritis = $_POST['expArthritis'];
 
    if ($varArthritis=="min"){
@@ -456,7 +463,7 @@ if($_POST['expArthritis'] !="") {
  }
 }
 
-if($_POST['expAsthma'] !="") {
+if(in_array($_POST['expAsthma'], $expected_expertise)) {
  $print[]="Filtered"; $varAsthma = $_POST['expAsthma'];
 
    if ($varAsthma=="min"){
@@ -473,7 +480,7 @@ if($_POST['expAsthma'] !="") {
  }
 }
 
-if($_POST['expCancer'] !="") {
+if(in_array($_POST['expCancer'], $expected_expertise)) {
  $print[]="Filtered"; $varCancer = $_POST['expCancer'];
 
    if ($varCancer=="min"){
@@ -490,7 +497,7 @@ if($_POST['expCancer'] !="") {
  }
 }
 
-if($_POST['expMentalHealth'] !="") {
+if(in_array($_POST['expMentalHealth'], $expected_expertise)) {
  $print[]="Filtered"; $varMentalHealth = $_POST['expMentalHealth'];
 
    if ($varMentalHealth=="min"){
@@ -507,7 +514,7 @@ if($_POST['expMentalHealth'] !="") {
  }
 }
 
-if($_POST['expOther2'] !="") {
+if(in_array($_POST['expOther2'], $expected_expertise)) {
  $print[]="Filtered"; $varOther2 = $_POST['expOther2'];
 
    if ($varOther2=="min"){
@@ -526,7 +533,7 @@ if($_POST['expOther2'] !="") {
 
 
 //Region Experience
-if($_POST['expUS'] !="") {
+if(in_array($_POST['expUS'], $expected_experience)) {
  $print[]="Filtered"; $varUS = $_POST['expUS'];
 
    if ($varUS=="min"){
@@ -540,7 +547,7 @@ if($_POST['expUS'] !="") {
  }
 }
 
-if($_POST['expLA'] !="") {
+if(in_array($_POST['expLA'], $expected_experience)) {
  $print[]="Filtered"; $varLA = $_POST['expLA'];
 
    if ($varLA=="min"){
@@ -554,7 +561,7 @@ if($_POST['expLA'] !="") {
  }
 }
 
-if($_POST['expEurope'] !="") {
+if(in_array($_POST['expEurope'], $expected_experience)) {
  $print[]="Filtered"; $varEurope = $_POST['expEurope'];
 
    if ($varEurope=="min"){
@@ -568,7 +575,7 @@ if($_POST['expEurope'] !="") {
  }
 }
 
-if($_POST['expME'] !="") {
+if(in_array($_POST['expME'], $expected_experience)) {
  $print[]="Filtered"; $varME = $_POST['expME'];
 
    if ($varME=="min"){
@@ -582,7 +589,7 @@ if($_POST['expME'] !="") {
  }
 }
 
-if($_POST['expAsia'] !="") {
+if(in_array($_POST['expAsia'], $expected_experience)) {
  $print[]="Filtered"; $varAsia = $_POST['expAsia'];
 
    if ($varAsia=="min"){

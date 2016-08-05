@@ -11,7 +11,7 @@
       // username and password sent from form 
 
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      $mypassword = $_POST['password']; 
 
       $sql = "SELECT salt, password FROM hcpusers WHERE username = '$myusername'";
       $result = mysqli_query($db,$sql);

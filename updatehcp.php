@@ -16,15 +16,27 @@
 	if (!(isset($_SESSION['login_user']) && $_SESSION['login_user'] != '')) {
 	header ("Location: login.php");
 	}
-		$sql = "SELECT * FROM persons WHERE `email` LIKE '%".$_POST['valueToSearch']."%'";
-		$mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-		$mysql_user     = "bf0fbe99b3665b";
-		$mysql_password = "bf7f29f2";
-		$mysql_database = "ad_63dc1eebbb2aed2";
-		$connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
-		$search_result = mysqli_query($connect, $sql);
-		$row = mysqli_fetch_array($search_result);
 
+	if($_POST['valueToSearch'] != "") {
+	$mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
+	$mysql_user     = "bf0fbe99b3665b";
+	$mysql_password = "bf7f29f2";
+	$mysql_database = "ad_63dc1eebbb2aed2";
+	$connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
+	$valueToSearch = $_POST['valueToSearch'];
+	$valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
+	$sql = "SELECT * FROM persons WHERE `email` LIKE '%".$valueToSearch."%'";
+	$search_result = mysqli_query($connect, $sql);
+	$row = mysqli_fetch_array($search_result);
+	} else {
+		header("Location: selecthcp.php");
+		
+	}
+
+	$count = mysqli_num_rows($search_result);
+	if($count != 1) {
+		header("Location: selecthcp.php");
+	}
     ?>
 </head>
 <body>
@@ -428,7 +440,7 @@
 
     </div>
     <input type="checkbox" id="showSubmit" onclick="checkSubmit();" value="showSubmit">Clicking submit will replace the HCP entry entirely with what you have updated.<br>
-    <div style="display:none" id="255">
+    <div style="display: n" id="255">
     <center>
     <br>
         <button  type="submit" class="btn btn-primary btn-large" width="30px" height="60px" type="button" name="submit">SUBMIT</button>
