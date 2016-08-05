@@ -1032,7 +1032,7 @@ $search_result = filterTable($sql);
                 ?>
                 <tr class="shownextrow">
                     <td style="vertical-align: center;"><?php //name
-                    echo $row['name'];?></td>
+                    echo htmlentities($row['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
                     
                     <td>
                     <ul>
@@ -1233,10 +1233,10 @@ $search_result = filterTable($sql);
 		                	<font size="6">
 		                	<?php
 
-		                	echo $row['name'].'</br>';
+		                	echo htmlentities($row['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</br>';
 		                	echo '</font><font size="1">';
-		                	echo '<a href =https://faces.tap.ibm.com/bluepages/profile.html?email='.$row['email'].'>Bluepages Profile</a><br>';
-		                	echo '<a href="mailto:'.$row['email'].'"target="_top">email: '.$row['email'].'</a><br>';
+		                	echo '<a href =https://faces.tap.ibm.com/bluepages/profile.html?email='.htmlentities($row['email'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'>Bluepages Profile</a><br>';
+		                	echo '<a href="mailto:'.htmlentities($row['email'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'"target="_top">email: '.htmlentities($row['email'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</a><br>';
 		                	?>
 		                	</font>
 	                	</td>
