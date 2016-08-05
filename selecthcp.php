@@ -4,20 +4,7 @@ session_start();
 if (!(isset($_SESSION['login_user']) && $_SESSION['login_user'] != '')) {
 header ("Location: login.php");
 }
-if(isset($_POST['search']) && $_POST['valueToSearch'] != "") {
-	$mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-	$mysql_user     = "bf0fbe99b3665b";
-	$mysql_password = "bf7f29f2";
-	$mysql_database = "ad_63dc1eebbb2aed2";
-	$connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
-	$valueToSearch = $_POST['valueToSearch'];
-	$valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
-	$sql = "SELECT * FROM persons WHERE `email` LIKE '%".$valueToSearch."%'";
 
-$search_result = mysqli_query($connect, $sql);
-$row = mysqli_fetch_array($search_result);
-$_POST['name'] = $row['name'];
-}
 ?>
 <style type = "text/css">
          body {
@@ -51,10 +38,16 @@ $_POST['name'] = $row['name'];
 
             <div style = "margin:30px">
 	            <form action="updatehcp.php" method="post">
-				<input style="width: 91%; height:30px" type="text" name="valueToSearch" placeholder="Search by email ONLY."> <br><br>
+				<input style="width: 100%; height:30px" type="text" name="valueToSearch" placeholder="Search by email ONLY."> <br><br>
 				<center>
-				<input style="width: 100px; height:30px" type="submit" name="search" value="Filter"><br>
+				<input style="width: 100px; height:30px" type="submit" name="search" value="Search"><br>
 				</center>
+				</form>
+				<br>
+				<form action="export.php" method="post">
+					<center>
+					<input style="width: 200px; height:30px" type="submit" name="export" value="Export Current Directory to CSV"><br>
+					</center>
 				</form>
             </div>
 
