@@ -49,6 +49,11 @@ header ("Location: login.php");
 					<input style="width: 200px; height:30px" type="submit" name="export" value="Export Current Directory to CSV"><br>
 					</center>
 				</form>
+            <form action="emails.php" method="post">
+               <center>
+               <input style="width: 200px; height:30px" type="submit" name="export" value="Display Current Email List"><br>
+               </center>
+            </form>
             </div>
 
          </div>
