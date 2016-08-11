@@ -30,13 +30,14 @@
 	$row = mysqli_fetch_array($search_result);
 	} else {
 		header("Location: selecthcp.php");
-		
+
 	}
 
 	$count = mysqli_num_rows($search_result);
 	if($count != 1) {
 		header("Location: selecthcp.php");
 	}
+	
     ?>
 </head>
 <body>
@@ -55,6 +56,8 @@
     <input style="width:40%; height:30px; display:none;" type="text" name="email_old" value='<?php echo $row['email']; ?>'></td>
     </tr>
     </table>
+    <br>
+    <input type="checkbox" <?php if ($row['email_list'] == 'Yes') echo 'checked'; ?> name="email_list" value="email_list">Yes, I would like to be included in the HCP mailing list to be invited to partake in meetings and health-related discussions.<br>
     <br>
     
     1.  Would you consider yourself a health/healthcare professional as defined above? 
@@ -440,10 +443,10 @@
 
     </div>
     <input type="checkbox" id="showSubmit" onclick="checkSubmit();" value="showSubmit">Clicking submit will replace the HCP entry entirely with what you have updated.<br>
-    <div style="display: n" id="255">
+    <div style="display: none" id="255">
     <center>
     <br>
-        <button  type="submit" class="btn btn-primary btn-large" width="30px" height="60px" type="button" name="submit">SUBMIT</button>
+        <button type="submit" class="btn btn-primary btn-large" width="30px" height="60px" type="button" name="submit">SUBMIT</button>
     </center>
     </div>
     <br>

@@ -24,6 +24,8 @@
     </tr>
     </table>
     <br>
+    <input type="checkbox" checked="checked" name="email_list" value="email_list">Yes, I would like to be included in the HCP mailing list to be invited to partake in meetings and health-related discussions.<br>
+    <br>
     <p>The World Health Organization defines “health/healthcare professionals as people who study, advise on and/or provide preventive, curative, rehabilitative, and promotional health services based on an extensive body of theoretical and factual knowledge in diagnosis and treatment of disease and other health problems.  The knowledge and skills required are usually obtained as a result of study at a higher educational institution in a health-related field for a period of 3-6 years leading to the award of a first degree or higher qualification.”
 
     This survey is for health/healthcare professionals, who have “accomplished these studies in preventive, curative, rehabilitative, and/or promotional health services.”
