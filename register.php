@@ -46,16 +46,12 @@
 
                </form>
                <?php
-                  $mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-                  $mysql_user     = "bf0fbe99b3665b";
-                  $mysql_password = "bf7f29f2";
-                  $mysql_database = "ad_63dc1eebbb2aed2";
-                  $db = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
+                  include "connection.php";
 
                   if($_SERVER["REQUEST_METHOD"] == "POST") {
                      // username and password sent from form 
                      $key = $_POST['key'];
-                     $myusername = mysqli_escape_string($db, $_POST['username']);
+                     $myusername = mysqli_escape_string($connect, $_POST['username']);
                      $mypassword = $_POST['password'];
                      $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
                         function generateHashWithSalt($password) {
@@ -66,7 +62,7 @@
                      if($key=="Y8ff3zxu1pWcqU2sncTi"){
                         if ($myusername!='' && $mypassword!=''&& $key!=''){
                            $sql = "INSERT INTO hcpusers (username, password, salt) VALUES ('$myusername', '$mypassword', '$salt')";
-                           $query = mysqli_query($db,$sql);
+                           $query = mysqli_query($connect,$sql);
                         
 
                            if (($query)) {

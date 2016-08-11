@@ -1,20 +1,16 @@
 <html>
 <?php
-   $mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-   $mysql_user     = "bf0fbe99b3665b";
-   $mysql_password = "bf7f29f2";
-   $mysql_database = "ad_63dc1eebbb2aed2";
-   $db = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
+   include "connection.php";
    session_start();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
 
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $myusername = mysqli_real_escape_string($connect,$_POST['username']);
       $mypassword = $_POST['password']; 
 
       $sql = "SELECT salt, password FROM hcpusers WHERE username = '$myusername'";
-      $result = mysqli_query($db,$sql);
+      $result = mysqli_query($connect,$sql);
       $row = mysqli_fetch_array($result);
       $match=$row['password'];
       $salt = $row['salt'];
@@ -22,7 +18,7 @@
       $count = mysqli_num_rows($result);
 
       // If result matched $myusername and $mypassword, table row must be 1 row
-        $db->close();
+        $connect->close();
       if($count == 1) {
 
          $_SESSION['login_user'] = $myusername;

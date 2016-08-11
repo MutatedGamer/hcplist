@@ -17,12 +17,7 @@
 }
 </style>
 <div class="container-fluid">
-	<!--<div class="row">-->
-		<!--<div class="col-md-8">
-			Main content goes here.
-		</div>-->
 		<div class="col-md-12">
-				<!--Connect to SQL DB-->
 				<?php
 				error_reporting(E_ALL); ini_set('display_errors', 1);
 
@@ -30,16 +25,10 @@
 					$display = "no custom filters";
 					unset($print);
 					$print=[];
-          $mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-          $mysql_user     = "bf0fbe99b3665b";
-          $mysql_password = "bf7f29f2";
-          $mysql_database = "ad_63dc1eebbb2aed2";
-          $connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
-   					$valueToSearch = $_POST['valueToSearch'];
-            $valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
-    				// search in all table columns
-    				// using concat mysql function
-    				$query = "CONCAT(`name`, `email`, `exp_with_other_2`, `exp_with_other`, `role_other`, `health_anal_org_1`, `health_anal_role_1`, `health_anal_org_2`, `health_anal_role_2`, `health_anal_org_3`, `health_anal_role_3`, `health_info_org_1`, `health_info_role_1`, `health_info_org_2`, `health_info_role_2`, `health_info_org_3`, `health_info_role_3`) LIKE '%".$valueToSearch."%'";
+          include "connection.php";
+   				$valueToSearch = $_POST['valueToSearch'];
+          $valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
+    			$query = "CONCAT(`name`, `email`, `exp_with_other_2`, `exp_with_other`, `role_other`, `health_anal_org_1`, `health_anal_role_1`, `health_anal_org_2`, `health_anal_role_2`, `health_anal_org_3`, `health_anal_role_3`, `health_info_org_1`, `health_info_role_1`, `health_info_org_2`, `health_info_role_2`, `health_info_org_3`, `health_info_role_3`) LIKE '%".$valueToSearch."%'";
 
 // Start of with some "base" or "generic" SQL which will be needed no matter which option/s are selected:
 $sql_base = "SELECT * FROM persons WHERE ";
@@ -618,11 +607,7 @@ $search_result = filterTable($sql);
 
 				function filterTable($query)
 				{
-				$mysql_hostname = "us-cdbr-iron-east-04.cleardb.net";
-				$mysql_user     = "bf0fbe99b3665b";
-				$mysql_password = "bf7f29f2";
-				$mysql_database = "ad_63dc1eebbb2aed2";
-    			$connect = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
+				  include "connection.php";
     			$filter_Result = mysqli_query($connect, $query);
     			return $filter_Result;
 				}
@@ -1248,23 +1233,38 @@ $search_result = filterTable($sql);
                 				//List if currently licensed to practice
                 				if($row['licensed'] == 'Yes') {echo "Currently licensed to practice.<br><br>";}
                 				//List previous employment organzations and roles
-                				if($row['employed_org_1']!='Not applicable' && $row['employed_role_1']!='Not applicable')
-                				{
-                					echo "Previously employed at:<ul>";
-                					echo "<li>".$row['employed_org_1'].' as a '.strtolower($row['employed_role_1'])."</li>";
-                				}
-                				if($row['employed_org_2']!='Not applicable' && $row['employed_role_2']!='Not applicable')
-                				{
-                					echo "<li>".$row['employed_org_2'].' as a '.strtolower($row['employed_role_2'])."</li>";
-                				}
-                				if($row['employed_org_3']!='Not applicable' && $row['employed_role_3']!='Not applicable')
-                				{
-                					echo "<li>".$row['employed_org_3'].' as a '.strtolower($row['employed_role_3'])."</li>";
-                				}
-                				if($row['employed_org_1']!='Not applicable' && $row['employed_role_1']!='Not applicable')
-                				{
-                				echo "</ul><br>";
-                				}
+                				if($row['employed_org_1']!='Not applicable'||$row['employed_org_2']!='Not applicable'||$row['employed_org_3']!='Not applicable')
+                            {
+                              echo "Previous Health Information Technology Roles At:<ul>";
+                            if($row['employed_org_1']!='Not applicable')
+                            {
+                              echo "<li>".htmlentities($row['employed_org_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                              if($row['employed_role_1']!='Not applicable')
+                              {
+                                echo " as a ".strtolower(htmlentities($row['employed_role_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+                              }
+                              echo"</li>";
+                            }
+                            if($row['employed_org_2']!='Not applicable')
+                            {
+                              echo "<li>".htmlentities($row['employed_org_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                              if($row['employed_role_2']!='Not applicable')
+                              {
+                                echo " as a ".strtolower(htmlentities($row['employed_role_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+                              }
+                              echo"</li>";
+                            }
+                            if($row['employed_org_3']!='Not applicable')
+                            {
+                              echo "<li>".htmlentities($row['employed_org_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                              if($row['employed_role_3']!='Not applicable')
+                              {
+                                echo " as a ".strtolower(htmlentities($row['employed_role_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+                              }
+                              echo"</li>";
+                            }
+                            echo "</ul><br>";
+                            }
 
                 				//List if author and if so what their focus areas were
                 				if($row['author']=='Yes')
@@ -1273,15 +1273,15 @@ $search_result = filterTable($sql);
                 				}
                 				if($row['focus_area_1']!="Not applicable")
                 				{
-                					echo " Focused in:<br><ul><li>".$row['focus_area_1'].'</li>';
+                					echo " Focused in:<br><ul><li>".htmlentities($row['focus_area_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</li>';
                 				}
                 				if($row['focus_area_2']!="Not applicable")
                 				{
-                					echo "<li>".$row['focus_area_2'].'</li>';
+                					echo "<li>".htmlentities($row['focus_area_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</li>';
                 				}
                 				if($row['focus_area_3']!="Not applicable")
                 				{
-                					echo "<li>".$row['focus_area_3'].'</li>';
+                					echo "<li>".htmlentities($row['focus_area_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</li>';
                 				}
                 				if($row['focus_area_1']!="Not applicable")
                 				{
@@ -1341,28 +1341,28 @@ $search_result = filterTable($sql);
                 					echo "Previous Health Analytics/Informatics Roles At:<ul>";
                 				if($row['health_anal_org_1']!='Not applicable')
                 				{
-                					echo "<li>".$row['health_anal_org_1'];
+                					echo "<li>".htmlentities($row['health_anal_org_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                 					if($row['health_anal_role_1']!='Not applicable')
                 					{
-                						echo " as a ".strtolower($row['health_anal_role_1']);
+                						echo " as a ".strtolower(htmlentities($row['health_anal_role_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
                 					}
                 					echo"</li>";
                 				}
                 				if($row['health_anal_org_2']!='Not applicable')
                 				{
-                					echo "<li>".$row['health_anal_org_2'];
+                					echo "<li>".htmlentities($row['health_anal_org_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                 					if($row['health_anal_role_2']!='Not applicable')
                 					{
-                						echo " as a ".strtolower($row['health_anal_role_2']);
+                						echo " as a ".strtolower(htmlentities($row['health_anal_role_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
                 					}
                 					echo"</li>";
                 				}
                 				if($row['health_anal_org_3']!='Not applicable')
                 				{
-                					echo "<li>".$row['health_anal_org_3'];
+                					echo "<li>".htmlentities($row['health_anal_org_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                 					if($row['health_anal_role_3']!='Not applicable')
                 					{
-                						echo " as a ".strtolower($row['health_anal_role_3']);
+                						echo " as a ".strtolower(htmlentities($row['health_anal_role_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
                 					}
                 					echo"</li>";
                 				}
@@ -1374,28 +1374,28 @@ $search_result = filterTable($sql);
 		                          echo "Previous Health Information Technology Roles At:<ul>";
 		                        if($row['health_info_org_1']!='Not applicable')
 		                        {
-		                          echo "<li>".$row['health_info_org_1'];
+		                          echo "<li>".htmlentities($row['health_info_org_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 		                          if($row['health_info_role_1']!='Not applicable')
 		                          {
-		                            echo " as a ".strtolower($row['health_info_role_1']);
+		                            echo " as a ".strtolower(htmlentities($row['health_info_role_1'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
 		                          }
 		                          echo"</li>";
 		                        }
 		                        if($row['health_info_org_2']!='Not applicable')
 		                        {
-		                          echo "<li>".$row['health_info_org_2'];
+		                          echo "<li>".htmlentities($row['health_info_org_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 		                          if($row['health_info_role_2']!='Not applicable')
 		                          {
-		                            echo " as a ".strtolower($row['health_info_role_2']);
+		                            echo " as a ".strtolower(htmlentities($row['health_info_role_2'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
 		                          }
 		                          echo"</li>";
 		                        }
 		                        if($row['health_info_org_3']!='Not applicable')
 		                        {
-		                          echo "<li>".$row['health_info_org_3'];
+		                          echo "<li>".htmlentities($row['health_info_role_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 		                          if($row['health_info_role_3']!='Not applicable')
 		                          {
-		                            echo " as a ".strtolower($row['health_info_role_3']);
+		                            echo " as a ".strtolower(htmlentities($row['health_info_role_3'], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
 		                          }
 		                          echo"</li>";
 		                        }
