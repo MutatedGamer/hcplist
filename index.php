@@ -18,7 +18,7 @@
 </style>
 <body>
 <div class="nav" dir="ltr" style="list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row nowrap;">
-<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 15px;">
+<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 5px;">
 
 
 
@@ -29,19 +29,7 @@
 
 
 </div>
-<!-- <div class="header" dir="ltr" style="width:100%; background-image: url(http://i.imgur.com/Yp9QCIa.png);height: 70px;text-align: center;font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;font-weight: 400;font-size: 42px;color: white;display: flex;align-items: center;justify-content: center;padding-bottom: 9px;margin: 0px 0 0px;">
-<div class="title" style="flex: 1;">
-<h1 id="title" style="margin: .3em 0;font-size: 1em;margin-bottom: 10px;color: white;">Project Marketplace<br>
-<small style="color: white;margin-top: -10px;font-weight: normal;line-height: 1;font-size: 50%;">
-<ul class="navigation" style="width:100%; list-style: none;margin: 0;padding: 0;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: space-around; align-items:center;">
-<li style="flex:1">Home</li>
-<li style="flex:1">Submit Project</li>
-<li style="flex:1">Test</li>
-</ul>
-</small>
-</h1>
-</div>
-</div> -->
+</font>
 <!--Filter PHP-->
 				<?php
 				error_reporting(E_ALL); ini_set('display_errors', 1);
@@ -640,7 +628,7 @@ $search_result = filterTable($sql);
 				
 				?>	
 				<div style="background-color:#3b4b54; padding-top:10px;padding-bottom:10px;">
-        <Strong style="margin-bottom:10px; color:white;">Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
+        <Strong style="margin-bottom:10px; padding-left:3px;color:white;">Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
 <form aciton="" method="POST">
 <input style="margin-left:3px; width: 84%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, or description.">
 <input style="width:15%; margin-right:3px; padding-left:1%;height:30px; float:right;" type="submit" name="filter" value="Filter">
@@ -651,6 +639,7 @@ $search_result = filterTable($sql);
             		echo "<span style='margin-bottom:10px; color:white;'>Displaying filtered results.</span>";
             	} else {echo "<span style='margin-bottom:10px; color:white;'>Displaying entire database.</span>";}
             	?>
+<font size="1">
             	<table id="filter1" style="color:white; display:none">
             	<tr>
               <td style="border-right: solid 1px gray; padding-left:10px;" width="20%" valign="top">
@@ -1022,7 +1011,7 @@ $search_result = filterTable($sql);
 				</table>
 
 				<table id="theTable" style="background-color:#ededed" class="table table-striped">
-                <thead class="thead-default" style="background-color:#262626; color:white;">
+                <thead class="thead-default" valign="middle" style="background-color:#262626; color:white;">
                 <tr align="center">
                     <th class="my-table-center">Name</th>
                     <th class="my-table-center">Health Services Delivered</th>

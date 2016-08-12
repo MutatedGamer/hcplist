@@ -18,8 +18,9 @@
 	</style>
 </head>
 <body>
+<font size="1">
 <div class="nav" dir="ltr" style="list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row nowrap;">
-<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 15px;">
+<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 5px;">
 
 
 
@@ -30,6 +31,7 @@
 
 
 </div>
+</font>
 <!-- <div class="header" dir="ltr" style="width:100%; background-image: url(http://i.imgur.com/Yp9QCIa.png);height: 70px;text-align: center;font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;font-weight: 400;font-size: 42px;color: white;display: flex;align-items: center;justify-content: center;padding-bottom: 9px;margin: 0px 0 0px;">
 <div class="title" style="flex: 1;">
 <h1 id="title" style="margin: .3em 0;font-size: 1em;margin-bottom: 10px;color: white;">Project Marketplace<br>
@@ -56,11 +58,12 @@ if(isset($_POST['filter'])) {
     $valueToSearch = mysqlI_escape_string($connect, $valueToSearch);
 	$query = "CONCAT(`name`, `email`, `description`) LIKE '%".$valueToSearch."%'";
 	$sql_extra[] = $query;
-	if (isset ( $_POST['category_1'] ) ) {$sql_extra[] = "category='category_1'"; $filtered="Yes";}
-	if (isset ( $_POST['category_2'] ) ) {$sql_extra[] = "category='category_2'"; $filtered="Yes";}
-	if (isset ( $_POST['category_3'] ) ) {$sql_extra[] = "category='category_3'"; $filtered="Yes";}
-	if (isset ( $_POST['category_4'] ) ) {$sql_extra[] = "category='category_4'"; $filtered="Yes";}
-	if (isset ( $_POST['category_5'] ) ) {$sql_extra[] = "category='category_5'"; $filtered="Yes";}
+	if (isset ( $_POST['category_1'] ) ) {$sql_extra[] = "category='oncology_and_genomics'"; $filtered="Yes";}
+	if (isset ( $_POST['category_2'] ) ) {$sql_extra[] = "category='life_sciences'"; $filtered="Yes";}
+	if (isset ( $_POST['category_3'] ) ) {$sql_extra[] = "category='imaging'"; $filtered="Yes";}
+	if (isset ( $_POST['category_4'] ) ) {$sql_extra[] = "category='value_based_care'"; $filtered="Yes";}
+	if (isset ( $_POST['category_5'] ) ) {$sql_extra[] = "category='government'"; $filtered="Yes";}
+	if (isset ( $_POST['category_6'] ) ) {$sql_extra[] = "category='watson_health_cloud'"; $filtered="Yes";}
 
 	if(in_array($_POST['commitment'], $expected_commitment)) {
   		$filtered="Yes"; 
@@ -119,6 +122,7 @@ function filterTable($query)
 
 <!--content-->
 <div style="background-color:#3b4b54; padding-top:10px;padding-bottom:10px;">
+<Strong style="margin-bottom:10px; padding-left:3px;color:white;">Click on a project to view its description!</Strong><br>
 <form aciton="" method="POST">
 <input style="margin-left:3px;width: 84%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, or description.">
 <input style="width:15%; padding-left:1%;height:30px; float:right;margin-right:3px" type="submit" name="filter" value="Filter">
@@ -132,17 +136,26 @@ if($filtered=="Yes") {
 </div>
 <table id="filter1" style="color:white; display:none">
 <tr>
-<td style="border-right: solid 1px gray; padding-left:10px;" width="20%" valign="top">
+<td style="border-right: solid 1px gray; padding-left:10px;" width="40%" valign="top">
 	<center><u>Categories</u><br>
-	<input type="checkbox" name="category_1" value="category_1" <?php if(isset($_POST['category_1'])) echo "checked='checked'"; ?>>Category 1<br>
-	<input type="checkbox" name="category_2" value="category_2" <?php if(isset($_POST['category_2'])) echo "checked='checked'"; ?>>Category 2<br>
-	<input type="checkbox" name="category_3" value="category_3" <?php if(isset($_POST['category_3'])) echo "checked='checked'"; ?>>Category 3<br>
-	<input type="checkbox" name="category_4" value="category_4" <?php if(isset($_POST['category_4'])) echo "checked='checked'"; ?>>Category 4<br>
-	<input type="checkbox" name="category_5" value="category_5" <?php if(isset($_POST['category_5'])) echo "checked='checked'"; ?>>Category 5<br>
+	<table style="border:none">
+	<tr>
+	<td>
+	<input type="checkbox" name="category_1" value="category_1" <?php if(isset($_POST['category_1'])) echo "checked='checked'"; ?>>Oncology & Genomics<br>
+	<input type="checkbox" name="category_2" value="category_2" <?php if(isset($_POST['category_2'])) echo "checked='checked'"; ?>>Life Sciences<br>
+	<input type="checkbox" name="category_3" value="category_3" <?php if(isset($_POST['category_3'])) echo "checked='checked'"; ?>>Imaging<br>
+	</td>
+	<td>
+	<input type="checkbox" name="category_4" value="category_4" <?php if(isset($_POST['category_4'])) echo "checked='checked'"; ?>>Value-Based Care<br>
+	<input type="checkbox" name="category_5" value="category_5" <?php if(isset($_POST['category_5'])) echo "checked='checked'"; ?>>Government<br>
+	<input type="checkbox" name="category_6" value="category_5" <?php if(isset($_POST['category_6'])) echo "checked='checked'"; ?>>Waston Health Cloud<br>
+	</td>
+	</tr>
+	</table>
 	</center>
 	
 </td>
-<td style="border-right: solid 1px gray; padding-left:10px;" width="60%" valign="top">
+<td style="border-right: solid 1px gray; padding-left:10px;" width="20%" valign="top">
 <center><u>Time Commitment</u><br>
 Restrict to <select style="color:black" name="commitment">
 	<option value="">Select...</option>
@@ -173,7 +186,6 @@ No more than <select style="color:black" name="duration">
                 <tr align="center">
                     <th class="my-table-center">Name</th>
                     <th class="my-table-center">Category</th>
-                    <th class="my-table-center">Description</th>
                     <th class="my-table-center">Time Commitment <small>(hrs/week)</small></th>
                     <th class="my-table-center">Duration (weeks)</th>
                     <th class="my-table-center">Email Contact</th>
@@ -182,20 +194,29 @@ No more than <select style="color:black" name="duration">
                 <?php
 					//Make Table Here//
                 	while($row = mysqli_fetch_array($search_result)): 
+                	$category="";
+                	if ($row['category']=='oncology_and_genomics') { $category='Oncology and Genomics';}
+                	if ($row['category']=='life_sciences') { $category='Life Sciences';}
+                	if ($row['category']=='imaging') { $category='Imaging';}
+                	if ($row['category']=='value_based_care') { $category='Value-Based Care';}
+                	if ($row['category']=='government') { $category='Government';}
+                	if ($row['category']=='watson_health_cloud') { $category='Watson Health Cloud';}
                 ?>
                 <tr class="shownextrow">
                     <td style="text-align:center; vertical-align: center;"><?php //name
                     echo htmlentities($row['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
-                    <td style="text-align:center; vertical-align: center;"><?php //name
-                    echo htmlentities($row['category'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
-                     <td style="text-align:center; vertical-align: center;"><?php //name
-                    echo htmlentities($row['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
+                    <td style="text-align:center; vertical-align: center;"><?php //category
+                    echo $category;?></td>
                      <td style="text-align:center; vertical-align: center;"><?php //name
                     echo htmlentities($row['commitment'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
                      <td style="text-align:center; vertical-align: center;"><?php //name
                     echo htmlentities($row['duration'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
                      <td style="text-align:center; vertical-align: center;"><?php //name
                     echo '<a href="mailto:'.htmlentities($row['email'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'?subject=[Project Marketplace] Request to Work on '. $row['name'].'"">'.htmlentities($row['email'], ENT_QUOTES | ENT_HTML5, 'UTF-8').'</a></td>';?>
+                  </tr>
+                  <tr style="display:none" class="extra-rows">
+                  <td colspan="5" style="text-align:center; vertical-align: center;"><?php //name
+                    echo htmlentities($row['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
                   </tr>
               <?php endwhile ?>
 </table>
@@ -204,7 +225,19 @@ No more than <select style="color:black" name="duration">
 
 <!-- minifed jQuery -->
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>   
-<script type="text/javascript">
+<script type="text/javascript">  
+        jQuery(function($) {
+  
+   $('#theTable').delegate("tr.shownextrow", "click", function() {
+    if($(this).closest("tr").next("tr").is(":hidden")) {
+    $(this).closest("tr").next("tr").show();
+                } else
+    $(this).closest("tr").next("tr").hide();
+
+  });
+  
+});
+
     function showFilter() {
     if (document.getElementById('filter1').style.display == "none"){
     document.getElementById("filter1").style.display="table";
