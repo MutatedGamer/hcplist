@@ -16,21 +16,8 @@
   height:auto;
 }
 </style>
-<body>
-<div class="nav" dir="ltr" style="list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row nowrap;">
-<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 5px;">
-
-
-
-<p><span style="font-size:20px;font-family:helvetica;color:#ffffff;">IBM </span><span style="font-size:20px;font-family:helvetica;color:#7dbc3c;">Watson Health </span><span style="font-size:20px;font-family:helvetica;color:#ffffff;"> <center><span style="padding-left:10px;font-size:20px;font-family:helvetica;color:#ffffff;">Health Expert Directory - Click<a href="newhcp.php"> here </a> to register.</span></center></span></p>
-</div>
-
-<p><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
-
-
-</div>
-</font>
-<!--Filter PHP-->
+<div class="container-fluid">
+		<div class="col-md-12">
 				<?php
 				error_reporting(E_ALL); ini_set('display_errors', 1);
 
@@ -626,23 +613,23 @@ $search_result = filterTable($sql);
 				}
 
 				
-				?>	
-				<div style="background-color:#3b4b54; padding-top:10px;padding-bottom:10px;">
-        <Strong style="margin-bottom:10px; padding-left:3px;color:white;">Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
-<form aciton="" method="POST">
-<input style="margin-left:3px; width: 84%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, or description.">
-<input style="width:15%; margin-right:3px; padding-left:1%;height:30px; float:right;" type="submit" name="search" value="Filter">
-<div style="padding-top:5px"><button type="button" onclick="showFilter()">Show Filter Options</button> 
-<?php if (isset ($_POST['filter'])){ echo"<button type='button' onclick='unfilter()'>Reset Filters</button>";}?>
+				?>
+				<form action="" method="post">
+				</br>
+				
+				<Strong>Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
+				<input style="width: 91%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, niche experience, and organization roles.">
+            	<input style="position: absolute; right: 15px; width: 100px; height:30px" type="submit" name="search" value="Filter"><br>
+            	<button type="button" onclick="filter()">Show Filter Options</button> 
+            	<?php if (isset ($_POST['search'])){ echo"<button type='button' onclick='unfilter()'>Reset Filters</button>";}?>
             	<?php
             	if($display!="") {
-            		echo "<span style='margin-bottom:10px; color:white;'>Displaying filtered results.</span>";
-            	} else {echo "<span style='margin-bottom:10px; color:white;'>Displaying entire database.</span>";}
+            		echo "Displaying filtered results.";
+            	} else {echo "Displaying entire database.";}
             	?>
-<font size="1">
-            	<table id="filter1" style="color:white; display:none">
+            	<table id="filter1" style="display:none">
             	<tr>
-              <td style="border-right: solid 1px gray; padding-left:10px;" width="20%" valign="top">
+              <td style="border-right: solid 1px gray" width="20%" valign="top">
               <center><u>Health Services Delivered</u><br> </center>
               <input type="checkbox" name="delivered_outpatient" value="delivered_outpatient" <?php if(isset($_POST['delivered_outpatient'])) echo "checked='checked'"; ?>>Outpatient or Clinic<br>
               <input type="checkbox" name="delivered_inpatient" value="delivered_inpatient" <?php if(isset($_POST['delivered_inpatient'])) echo "checked='checked'"; ?>>Inpatient or Hospital <br>
@@ -721,9 +708,9 @@ $search_result = filterTable($sql);
               </tr>
               </table>
               <br><br>
-              <table id="filter2" style="color:white; display:none">
+              <table id="filter2" style="display:none">
             	<tr>
-            	<td width="25%" valign="top" style="padding-left:10px;">
+            	<td width="25%" valign="top">
             	<center><u>Stakeholder Customer Experience</u><br></center>
             	At least <select name="expProvider">
 				  <option value="">Select...</option>
@@ -1010,8 +997,8 @@ $search_result = filterTable($sql);
 				</tr>
 				</table>
 
-				<table id="theTable" style="background-color:#ededed" class="table table-striped">
-                <thead class="thead-default" valign="middle" style="background-color:#262626; color:white;">
+				<table id="theTable" class="table table-striped">
+                <thead class="thead-default">
                 <tr align="center">
                     <th class="my-table-center">Name</th>
                     <th class="my-table-center">Health Services Delivered</th>
@@ -1451,7 +1438,7 @@ $search_result = filterTable($sql);
 
     </script>     
     <script type="text/javascript">
-    function showFilter() {
+    function filter() {
     if (document.getElementById('filter1').style.display == "none"){
     document.getElementById("filter1").style.display="table";
     document.getElementById("filter2").style.display="table";

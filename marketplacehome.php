@@ -216,7 +216,14 @@ No more than <select style="color:black" name="duration">
                   </tr>
                   <tr style="display:none" class="extra-rows">
                   <td colspan="5" style="text-align:center; vertical-align: center;"><?php //name
-                    echo htmlentities($row['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?></td>
+                    echo htmlentities($row['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');?>
+                    <br><br>
+                
+
+                    <a href="deleteproject.php?id=<?php echo $row['id'] ?>"><input style="width:25%; padding-left:1%;height:30px; float:middle;margin-right:3px" type="submit" name="delete" value="Remove"></a>
+
+
+                    </td>
                   </tr>
               <?php endwhile ?>
 </table>
@@ -247,6 +254,8 @@ No more than <select style="color:black" name="duration">
     document.getElementById("filter2").style.display="none";
 	}
 }
+
+
 
 	function unfilter(){for(var i of document.querySelectorAll('[type=checkbox]')) { i.checked = false; } $("select").each(function() { this.selectedIndex = 0 });}
 </script>     

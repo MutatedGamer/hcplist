@@ -4,8 +4,7 @@
 	{
 	    die("Connection failed: " . $db->connect_error);
 	}
-	$expected_category = array('category_1', 'category_2', 'category_3', 'category_4', 'category_5');
-
+	$expected_category = array('oncology_and_genomics', 'life_sciences', 'imaging', 'value_based_care', 'government', 'watson_health_cloud');
 	$name=mysqli_escape_string($connect, $_POST['name']);
 	$name_old=mysqli_escape_string($connect, $_POST['name_old']);
 	$email=mysqli_escape_string($connect, $_POST['email']);

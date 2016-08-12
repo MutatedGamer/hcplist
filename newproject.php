@@ -73,7 +73,7 @@
 	<br><br>
 	Number of weeks requested: <input style="color:black" name="duration" type="number" onkeypress="return isNumberKey(event)"/>
 	<br><br>
-    
+    Delete Password: <input style="color:black; width:80%; height:30px" type="password" name="password" placeholder="This cannot be changed - REMEMBER IT!"><br><br>
 	<input type="checkbox" id="showSubmit" onclick="checkSubmit();" value="showSubmit">By clicking here you ackowledge that the answers you have submitted on this form will be displayed for public visibility on the Project Marketplace for people to see and contact you. You further agree that you have answered each question to the best of your knowledge and that in order to remove or change any information an administrator must be contacted.  <br>
     <div id="255" style="display:none">
     <center>

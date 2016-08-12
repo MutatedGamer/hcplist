@@ -82,12 +82,13 @@ th {
 	text-align: center;
 }
 
-.my-table-center{ text-align: center;}
+.my-table-center{ text-align: center; vertical-align: middle;}
 .my-table-right{ text-align:right; }
 
 th, td {
 	text-align: left;
 	padding: 2px 20px;
+	vertical-align: middle;
 }
 
 .env-var {

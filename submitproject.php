@@ -4,7 +4,7 @@
 	{
 	    die("Connection failed: " . $db->connect_error);
 	}
-	$expected_category = array('category_1', 'category_2', 'category_3', 'category_4', 'category_5');
+	$expected_category = array('oncology_and_genomics', 'life_sciences', 'imaging', 'value_based_care', 'government', 'watson_health_cloud');
 
 	$name=mysqli_escape_string($connect, $_POST['name']);
 	$email=mysqli_escape_string($connect, $_POST['email']);
@@ -19,9 +19,13 @@
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) && $name!="" && $description!="" && $category!="Not available" && $commitment>=0 && $duration>=0) {
 
+			$mypassword = $_POST['password'];
+                     $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
+                     $mypassword = hash("sha256", $_POST['password'] . $salt); 
+                     $mypassword = md5($mypassword);
 			
 
-			$query = "INSERT INTO projects (name, email, description, category, commitment, duration) VALUES ('$name', '$email', '$description', '$category', '$commitment', '$duration')";
+			$query = "INSERT INTO projects (name, email, description, category, commitment, duration, password, salt) VALUES ('$name', '$email', '$description', '$category', '$commitment', '$duration', '$mypassword', '$salt')";
 			$input = mysqli_query($connect, $query);
 			if ($input) {
 				header("location: marketplacehome.php");

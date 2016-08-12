@@ -81,11 +81,13 @@
     Project Category: 
     <select style="width:300px; color:black" name="category">
 	<option value="">Select...</option>
-	<option value="category_1" <?php if ($row['category'] == 'category_1') echo ' selected="selected"'; ?>>Option 1</option>
-	<option value="category_2" <?php if ($row['category'] == 'category_2') echo ' selected="selected"'; ?>>Option 2</option>
-	<option value="category_3" <?php if ($row['category'] == 'category_3') echo ' selected="selected"'; ?>>Option 3</option>
-	<option value="category_4" <?php if ($row['category'] == 'category_4') echo ' selected="selected"'; ?>>Option 4</option>
-	<option value="category_4" <?php if ($row['category'] == 'category_5') echo ' selected="selected"'; ?>>Option 5</option>
+	<option value="oncology_and_genomics" <?php if ($row['category'] == 'oncology_and_genomics') echo ' selected="selected"'; ?>>Oncology & Genomics</option>
+	<option value="life_sciences" <?php if ($row['category'] == 'life_sciences') echo ' selected="selected"'; ?>>Life Sciences</option>
+	<option value="imaging" <?php if ($row['category'] == 'imaging') echo ' selected="selected"'; ?>>Imaging</option>
+	<option value="value_based_care" <?php if ($row['category'] == 'value_based_care') echo ' selected="selected"'; ?>>Value-Based Care</option>
+	<option value="government" <?php if ($row['category'] == 'government') echo ' selected="selected"'; ?>>Government</option>
+	<option value="watson_health_cloud" <?php if ($row['category'] == 'watson_health_cloud') echo ' selected="selected"'; ?>>Watson Health Cloud</option>
+
 </select>
 <br><br>
 	Hours requested each week: <input value='<?php echo $row['commitment']; ?>' style="color:black" name="commitment" type="number" onkeypress="return isNumberKey(event)"/>

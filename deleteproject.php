@@ -2,14 +2,12 @@
 <?php
    include "connection.php";
    session_start();
-
+$id = $_GET['id'];
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
 
-      $myusername = mysqli_real_escape_string($connect,$_POST['username']);
-      $mypassword = $_POST['password']; 
-
-      $sql = "SELECT salt, password FROM hcpusers WHERE username = '$myusername'";
+      $id = intval($_GET['id']);
+      $sql = "SELECT salt, password FROM projects WHERE id = '$id'";
       $result = mysqli_query($connect,$sql);
       $row = mysqli_fetch_array($result);
       $match=$row['password'];
@@ -19,12 +17,10 @@
       $count = mysqli_num_rows($result);
 
       // If result matched $myusername and $mypassword, table row must be 1 row
-        $connect->close();
       if($count == 1 && $password == $match) {
-
-         $_SESSION['login_user'] = $myusername;
-
-         header("location: selecthcp.php");
+         $query= "DELETE FROM projects WHERE password='$password'";
+         mysqli_query($connect, $query);
+         header("location: marketplacehome.php");
       }else {
          $error = "Your Username or Password is invalid";
       }
@@ -34,7 +30,7 @@
 
    <head>
 
-        <title>HCP Admin - Log In</title>
+        <title>Confirm Delete</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap-custom.css">
@@ -64,20 +60,16 @@
 
    <body>
    <div style="padding-top:50px;" class="col-xs-12" align='center'>
-   <h1 style="font-family:sans-serif; font-size:50px; color:#black;"><strong>Login to Edit Database<strong></h1>
+   <h1 style="font-family:sans-serif; font-size:50px; color:#black;"><strong>Enter Password to Delete<strong></h1>
    </div>
       <div align = "center">
          <div style = "margin-top:175px; background-color: gray; width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
 
             <div style = "margin:30px">
 
                <form action = "" method = "post">
-            
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Submit "/><br /></br>
-                  <a style="color:white" href="register.php">Not registered? Click here!</a>
+                  <label>Password  <?php echo $id ?>:</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <input type = "submit" value = " Delete "/><br /></br>
                </form>
 
             </div>

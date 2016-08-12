@@ -54,10 +54,7 @@
                      $myusername = mysqli_escape_string($connect, $_POST['username']);
                      $mypassword = $_POST['password'];
                      $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
-                        function generateHashWithSalt($password) {
-                         
-                         return hash("sha256", $password . $salt);
-                        }  
+                     $mypassword = hash("sha256", $mypassword . $salt);
                      $mypassword = md5($mypassword);
                      if($key=="Y8ff3zxu1pWcqU2sncTi"){
                         if ($myusername!='' && $mypassword!=''&& $key!=''){
