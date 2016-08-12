@@ -144,6 +144,7 @@
 		mysqli_query($connect,$query);
 
 		echo "Submitted successfully!";
+		header("Location:index.php");
 	} else {
 		echo ("Email already exists in database. If you want to update your information, please contact an administrator from the community homepage.");
 	}

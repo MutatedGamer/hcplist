@@ -9,7 +9,25 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 </head>
+<style>
+input {
+    color:black;
+}
+</style>
 <body>
+<div class="nav" dir="ltr" style="list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row nowrap;">
+<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 15px;">
+
+
+
+<p><span style="font-size:20px;font-family:helvetica;color:#ffffff;">IBM </span><span style="font-size:20px;font-family:helvetica;color:#7dbc3c;">Watson Health </span><span style="font-size:20px;font-family:helvetica;color:#ffffff;"> <center><span style="padding-left:10px;font-size:20px;font-family:helvetica;color:#ffffff;">Health Expert Directory -<a href="index.php"> Back </a></span></center></span></p>
+</div>
+
+<p><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+
+</div>
+<body style="background-color:#2d3a43; color:white;">
 <font size="3">
 <form action="submit.php" method="post">
 <div class="container">
@@ -31,13 +49,13 @@
     This survey is for health/healthcare professionals, who have “accomplished these studies in preventive, curative, rehabilitative, and/or promotional health services.”
     <br><br>
     1.  Would you consider yourself a health/healthcare professional as defined above? 
-    <select name="considers_self_hcp">
+    <select style="color:black" name="considers_self_hcp">
           <option value="No">No</option>
           <option value="Yes">Yes</option>
     </select>
     <br><br>
     2. Have you delivered “health services” directly to individuals? 
-    <select id="2" name="delivered_health_solutions" onclick="show21()">
+    <select style="color:black" id="2" name="delivered_health_solutions" onclick="show21()">
           <option value="No">No</option>
           <option value="Yes">Yes</option>
     </select>
@@ -90,7 +108,7 @@
         <input type="checkbox" name="radiology_training" value="radiology_training">Radiology  <br>
         <input type="checkbox" name="surgery_training" value="surgery_training">Surgery  <br><br>
     4.  Are you currently licensed in your field to practice or deliver care?
-    <select name="licensed">
+    <select style="color:black" name="licensed">
           <option value="No">No</option>
           <option value="Yes">Yes</option>
     </select>
@@ -124,56 +142,56 @@
 
     6. Please rate your experiences in having the following healthcare stakeholder as a customer you have provided solutions/services to. <br>
     a. Providers (e.g., hospitals, clinics, healthcare systems)
-    <select name="exp_providers">
+    <select style="color:black" name="exp_providers">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>     
     b. Pharmaceutical / Biotechnology
-    <select name="exp_pharm">
+    <select style="color:black" name="exp_pharm">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>
     c. Medical Device
-    <select name="exp_medical_device">
+    <select style="color:black" name="exp_medical_device">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>
     d. Private Payers (e.g., health insurance companies)
-    <select name="exp_private_payers">
+    <select style="color:black" name="exp_private_payers">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>  
     e. Public Payers (e.g., government)
-    <select name="exp_public_payers">
+    <select style="color:black" name="exp_public_payers">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>
     f. Employers – Health & Benefits
-    <select name="exp_medical_employers">
+    <select style="color:black" name="exp_medical_employers">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>
     g. Health Information Technology (e.g., EMR, digital health)
-    <select name="exp_health_info_tech">
+    <select style="color:black" name="exp_health_info_tech">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences"experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br> 
     h. Other (please explain)
-    <select name="exp_level_other">
+    <select style="color:black" name="exp_level_other">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
@@ -183,35 +201,35 @@
 
     7. Please rate your experiences working in the following geographies. <br>
     a. United States and Canada    
-    <select name="exp_us_canada">
+    <select style="color:black" name="exp_us_canada">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br> 
     b. Latin America   
-    <select name="exp_latin_america">
+    <select style="color:black" name="exp_latin_america">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>      
     c. Europe  
-    <select name="exp_europe">
+    <select style="color:black" name="exp_europe">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>        
     d. Middle East, Africa  
-    <select name="exp_middle_east_africa">
+    <select style="color:black" name="exp_middle_east_africa">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
     <option value="high level of experiences">high level of experiences</option>
     </select><br>       
     e. Pacific Asia
-    <select name="exp_asia_pacific">
+    <select style="color:black" name="exp_asia_pacific">
     <option value="no experience">no experience</option>
     <option value="minimal experiences">minimal experiences</option>
     <option vlaue="some experiences">some experiences</option>
@@ -252,7 +270,7 @@
 
     11. Please rate your experience in the following Watson Health focus areas. <br>
     a. Oncology    
-    <select name="exp_onc">
+    <select style="color:black" name="exp_onc">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -260,7 +278,7 @@
     <option value="expert">expert</option>
     </select><br>          
     b. Genomics  
-    <select name="exp_genomics">
+    <select style="color:black" name="exp_genomics">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -268,7 +286,7 @@
     <option value="expert">expert</option>
     </select><br>            
     c. Clinical Trials
-    <select name="exp_clinical_trials">
+    <select style="color:black" name="exp_clinical_trials">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -276,7 +294,7 @@
     <option value="expert">expert</option>
     </select><br>             
     d. Radiology  
-    <select name="exp_radiology">
+    <select style="color:black" name="exp_radiology">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -284,7 +302,7 @@
     <option value="expert">expert</option>
     </select><br>           
     e. Health and Wellness     
-    <select name="exp_health_wellness">
+    <select style="color:black" name="exp_health_wellness">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -292,7 +310,7 @@
     <option value="expert">expert</option>
     </select><br>        
     f. Chronic Disease Management    
-    <select name="exp_chronic_disease_management">
+    <select style="color:black" name="exp_chronic_disease_management">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -300,7 +318,7 @@
     <option value="expert">expert</option>
     </select><br>          
     g. Preventive Care (e.g., vaccinations, cancer screenings)   
-    <select name="exp_preventive_care">
+    <select style="color:black" name="exp_preventive_care">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -308,7 +326,7 @@
     <option value="expert">expert</option>
     </select><br>          
     h. Population Health  
-    <select name="exp_population_health">
+    <select style="color:black" name="exp_population_health">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -316,7 +334,7 @@
     <option value="expert">expert</option>
     </select><br>           
     i. Social and Welfare Programs/Social Determinants of Health
-    <select name="exp_social_welfare">
+    <select style="color:black" name="exp_social_welfare">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -324,7 +342,7 @@
     <option value="expert">expert</option>
     </select><br>             
     j. Life Sciences Real World Evidence   
-    <select name="exp_life_sciences">
+    <select style="color:black" name="exp_life_sciences">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -332,7 +350,7 @@
     <option value="expert">expert</option>
     </select><br>          
     k. Value-Based Care
-    <select name="exp_value_based_care">
+    <select style="color:black" name="exp_value_based_care">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -342,7 +360,7 @@
 
     12. Please rate your market experience in the following therapeutic areas. <br>
     a. Heart Disease   
-    <select name="exp_heart_disease">
+    <select style="color:black" name="exp_heart_disease">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -350,7 +368,7 @@
     <option value="expert">expert</option>
     </select><br>                 
     b. Diabetes         
-    <select name="exp_diabetes">
+    <select style="color:black" name="exp_diabetes">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -358,7 +376,7 @@
     <option value="expert">expert</option>
     </select><br>            
     c. Arthritis      
-    <select name="exp_arthritis">
+    <select style="color:black" name="exp_arthritis">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -366,7 +384,7 @@
     <option value="expert">expert</option>
     </select><br>              
     d. Asthma/COPD  
-    <select name="exp_asthma_copd">
+    <select style="color:black" name="exp_asthma_copd">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -374,7 +392,7 @@
     <option value="expert">expert</option>
     </select><br>                  
     e. Cancer   
-    <select name="exp_cancer">
+    <select style="color:black" name="exp_cancer">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -382,7 +400,7 @@
     <option value="expert">expert</option>
     </select><br>                  
     f. Mental Health    
-    <select name="exp_mental_health">
+    <select style="color:black" name="exp_mental_health">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -390,7 +408,7 @@
     <option value="expert">expert</option>
     </select><br>                
     g. Other (please explain)
-    <select name="exp_level_other_2">
+    <select style="color:black" name="exp_level_other_2">
     <option value="no expertise">no expertise</option>
     <option value="minimal expertise">minimal expertise</option>
     <option vlaue="some expertise">some expertise</option>
@@ -400,7 +418,7 @@
     with <input style="width:40%; height:25px" type="text" name="exp_with_other_2" placeholder=""><br><br>
 
     13. Are you an author on any peer-reviewed abstracts and/or publications?
-    <select id="author" onclick="show131();" name="author">
+    <select style="color:black" id="author" onclick="show131();" name="author">
           <option value="No">No</option>
           <option value="Yes">Yes</option>
     </select><br>

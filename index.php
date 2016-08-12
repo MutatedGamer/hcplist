@@ -16,8 +16,33 @@
   height:auto;
 }
 </style>
-<div class="container-fluid">
-		<div class="col-md-12">
+<body>
+<div class="nav" dir="ltr" style="list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row nowrap;">
+<div class="navtitle" style="width: 100%; height:20px;list-style: none;margin: 0;padding: 0;background: #262626;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: flex-start;padding-top:10px; padding-left: 15px;">
+
+
+
+<p><span style="font-size:20px;font-family:helvetica;color:#ffffff;">IBM </span><span style="font-size:20px;font-family:helvetica;color:#7dbc3c;">Watson Health </span><span style="font-size:20px;font-family:helvetica;color:#ffffff;"> <center><span style="padding-left:10px;font-size:20px;font-family:helvetica;color:#ffffff;">Health Expert Directory - Click<a href="newhcp.php"> here </a> to register.</span></center></span></p>
+</div>
+
+<p><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+
+
+</div>
+<!-- <div class="header" dir="ltr" style="width:100%; background-image: url(http://i.imgur.com/Yp9QCIa.png);height: 70px;text-align: center;font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;font-weight: 400;font-size: 42px;color: white;display: flex;align-items: center;justify-content: center;padding-bottom: 9px;margin: 0px 0 0px;">
+<div class="title" style="flex: 1;">
+<h1 id="title" style="margin: .3em 0;font-size: 1em;margin-bottom: 10px;color: white;">Project Marketplace<br>
+<small style="color: white;margin-top: -10px;font-weight: normal;line-height: 1;font-size: 50%;">
+<ul class="navigation" style="width:100%; list-style: none;margin: 0;padding: 0;display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content: space-around; align-items:center;">
+<li style="flex:1">Home</li>
+<li style="flex:1">Submit Project</li>
+<li style="flex:1">Test</li>
+</ul>
+</small>
+</h1>
+</div>
+</div> -->
+<!--Filter PHP-->
 				<?php
 				error_reporting(E_ALL); ini_set('display_errors', 1);
 
@@ -613,23 +638,22 @@ $search_result = filterTable($sql);
 				}
 
 				
-				?>
-				<form action="" method="post">
-				</br>
-				
-				<Strong>Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
-				<input style="width: 91%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, niche experience, and organization roles.">
-            	<input style="position: absolute; right: 15px; width: 100px; height:30px" type="submit" name="search" value="Filter"><br>
-            	<button type="button" onclick="filter()">Show Filter Options</button> 
-            	<?php if (isset ($_POST['search'])){ echo"<button type='button' onclick='unfilter()'>Reset Filters</button>";}?>
+				?>	
+				<div style="background-color:#3b4b54; padding-top:10px;padding-bottom:10px;">
+        <Strong style="margin-bottom:10px; color:white;">Click on a professional to reveal more information. Bolded fields indicates an expert level in that specific area.</Strong><br>
+<form aciton="" method="POST">
+<input style="width: 84%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, or description.">
+<input style="width:15%; padding-left:1%;height:30px; float:right;" type="submit" name="filter" value="Filter">
+<div style="padding-top:5px"><button type="button" onclick="showFilter()">Show Filter Options</button> 
+<?php if (isset ($_POST['filter'])){ echo"<button type='button' onclick='unfilter()'>Reset Filters</button>";}?>
             	<?php
             	if($display!="") {
-            		echo "Displaying filtered results.";
-            	} else {echo "Displaying entire database.";}
+            		echo "<span style='margin-bottom:10px; color:white;'>Displaying filtered results.</span>";
+            	} else {echo "<span style='margin-bottom:10px; color:white;'>Displaying entire database.</span>";}
             	?>
-            	<table id="filter1" style="display:none">
+            	<table id="filter1" style="color:white; display:none">
             	<tr>
-              <td style="border-right: solid 1px gray" width="20%" valign="top">
+              <td style="border-right: solid 1px gray; padding-left:10px;" width="20%" valign="top">
               <center><u>Health Services Delivered</u><br> </center>
               <input type="checkbox" name="delivered_outpatient" value="delivered_outpatient" <?php if(isset($_POST['delivered_outpatient'])) echo "checked='checked'"; ?>>Outpatient or Clinic<br>
               <input type="checkbox" name="delivered_inpatient" value="delivered_inpatient" <?php if(isset($_POST['delivered_inpatient'])) echo "checked='checked'"; ?>>Inpatient or Hospital <br>
@@ -708,9 +732,9 @@ $search_result = filterTable($sql);
               </tr>
               </table>
               <br><br>
-              <table id="filter2" style="display:none">
+              <table id="filter2" style="color:white; display:none">
             	<tr>
-            	<td width="25%" valign="top">
+            	<td width="25%" valign="top" style="padding-left:10px;">
             	<center><u>Stakeholder Customer Experience</u><br></center>
             	At least <select name="expProvider">
 				  <option value="">Select...</option>
@@ -997,8 +1021,8 @@ $search_result = filterTable($sql);
 				</tr>
 				</table>
 
-				<table id="theTable" class="table table-striped">
-                <thead class="thead-default">
+				<table id="theTable" style="background-color:#ededed" class="table table-striped">
+                <thead class="thead-default" style="background-color:#262626; color:white;">
                 <tr align="center">
                     <th class="my-table-center">Name</th>
                     <th class="my-table-center">Health Services Delivered</th>
@@ -1438,7 +1462,7 @@ $search_result = filterTable($sql);
 
     </script>     
     <script type="text/javascript">
-    function filter() {
+    function showFilter() {
     if (document.getElementById('filter1').style.display == "none"){
     document.getElementById("filter1").style.display="table";
     document.getElementById("filter2").style.display="table";

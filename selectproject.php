@@ -30,34 +30,26 @@ header ("Location: login.php");
 
    <body>
    <div style="padding-top:50px;" class="col-xs-12" align='center'>
-   <h1 style="font-family:sans-serif; font-size:50px; color:#black;"><strong>Search for HCP to Edit/Delete<strong></h1>
+   <h1 style="font-family:sans-serif; font-size:50px; color:#black;"><strong>Search for Project to Edit/Delete<strong></h1>
    </div>
       <div align = "center">
          <div style = "margin-top:10px; background-color: gray; width:300px; border: solid 1px #333333; " align = "left">
             <div style = "background-color:#333333; color:#FFFFFF; padding:0px;"><b></b>
                <center>
                <br>
-               <a href="selectproject.php" style="color:white">Click here to go to the project marketplace admin page.</a>
+               <a href="selecthcp.php" style="color:white">Click here to go to the health expert directory admin page.</a>
                <br><br>
                </center>
             </div>
 
             <div style = "margin:30px">
-	            <form action="updatehcp.php" method="post">
-				<input style="width: 100%; height:30px" type="text" name="valueToSearch" placeholder="Search by email ONLY."> <br><br>
-				<center>
-				<input style="width: 100px; height:30px" type="submit" name="search" value="Search"><br>
-				</center>
-				</form>
-				<br>
-				<form action="export.php" method="post">
-					<center>
-					<input style="width: 200px; height:30px" type="submit" name="export" value="Export Current Directory to CSV"><br>
-					</center>
-				</form>
-            <form action="emails.php" method="post">
-               <center>
-               <input style="width: 200px; height:30px" type="submit" name="export" value="Display Current Email List"><br>
+               <form action="updateproject.php" method="post">
+            <input style="width: 100%; height:30px" type="text" name="valueToSearch" placeholder="Search by EXACT project name ONLY."> <br><br>
+            <center>
+            <input style="width: 100px; height:30px" type="submit" name="search" value="Search"><br>
+            </center>
+            </form>
+            <br>
                </center>
             </form>
             </div>
