@@ -61,17 +61,19 @@
     Project Category: 
     <select style="width:300px; color:black" name="category">
 	<option value="">Select...</option>
-	<option value="category_1">Option 1</option>
-	<option value="category_2">Option 2</option>
-	<option value="category_3">Option 3</option>
-	<option value="category_4">Option 4</option>
-	<option value="category_4">Option 5</option>
+	<option value="oncology_and_genomics">Oncology & Genomics</option>
+	<option value="life_sciences">Life Sciences</option>
+	<option value="imaging">Imaging</option>
+	<option value="value_based_care">Value-Based Care</option>
+	<option value="government">Government</option>
+    <option value="watson_health_cloud">Watson Health Cloud</option>
 </select>
 <br><br>
 	Hours requested each week: <input style="color:black" name="commitment" type="number" onkeypress="return isNumberKey(event)"/>
 	<br><br>
 	Number of weeks requested: <input style="color:black" name="duration" type="number" onkeypress="return isNumberKey(event)"/>
 	<br><br>
+    
 	<input type="checkbox" id="showSubmit" onclick="checkSubmit();" value="showSubmit">By clicking here you ackowledge that the answers you have submitted on this form will be displayed for public visibility on the Project Marketplace for people to see and contact you. You further agree that you have answered each question to the best of your knowledge and that in order to remove or change any information an administrator must be contacted.  <br>
     <div id="255" style="display:none">
     <center>
