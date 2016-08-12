@@ -120,8 +120,8 @@ function filterTable($query)
 <!--content-->
 <div style="background-color:#3b4b54; padding-top:10px;padding-bottom:10px;">
 <form aciton="" method="POST">
-<input style="width: 84%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, or description.">
-<input style="width:15%; padding-left:1%;height:30px; float:right;" type="submit" name="filter" value="Filter">
+<input style="margin-left:3px;width: 84%; height:30px" type="text" name="valueToSearch" placeholder="Search by name, email, or description.">
+<input style="width:15%; padding-left:1%;height:30px; float:right;margin-right:3px" type="submit" name="filter" value="Filter">
 <div style="padding-top:5px"><button type="button" onclick="showFilter()">Show Filter Options</button> 
 <?php if (isset ($_POST['filter'])){ echo"<button type='button' onclick='unfilter()'>Reset Filters</button>";}?>
 <?php
